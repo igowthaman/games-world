@@ -1,7 +1,6 @@
 import React from 'react';
 import { AppBar, Container, Toolbar, Typography, MenuItem, Menu, Avatar, IconButton, Tooltip, Box } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { Link } from 'react-router-dom';
+
 
 class NavBar extends React.Component {
     state = {
@@ -17,7 +16,7 @@ class NavBar extends React.Component {
                             variant="h5"
                             noWrap
                             component="a"
-                            href=""
+                            href="/"
                             sx={{
                                 mr: 2,
                                 flexGrow: 1,
@@ -33,14 +32,6 @@ class NavBar extends React.Component {
                         </Typography>
                       
                         <Box>
-                            <Tooltip title="Search">
-                                <Link to="/">
-                                    <IconButton onClick={()=>{}} sx={{ p : 1, mx : 2 }}>
-                                        <SearchIcon fontSize='large' sx={{color:"white"}}/>
-                                    </IconButton>
-                                </Link>
-                            </Tooltip>
-
                             <Tooltip title="Profile">
                                 <IconButton onClick={()=>{this.setState({menuStatus : !this.state.menuStatus})}} sx={{ p: 0 }}>
                                     <Avatar alt="Remy Sharp" src="https://lh3.googleusercontent.com/ogw/AAEL6sjIQ_9YQigvlBGnALLXg4tHT3dNVjJTwlpjEUvD=s32-c-mo"/>
@@ -53,6 +44,7 @@ class NavBar extends React.Component {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
+                                anchorEl={this.state.menuStatus}
                                 keepMounted
                                 transformOrigin={{
                                     vertical: 'top',
@@ -61,6 +53,7 @@ class NavBar extends React.Component {
                                 open={this.state.menuStatus}
                                 onClose={()=>{this.setState({menuStatus : !this.state.menuStatus})}}
                             >
+                                
                                 <MenuItem onClick={()=>{this.setState({menuStatus : !this.state.menuStatus})}}>
                                     <Typography textAlign="center">Logout</Typography>
                                 </MenuItem>
