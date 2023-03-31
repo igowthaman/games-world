@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const connect = async (method, url, params = {})=>{
+const RapidAPIconnect = async (method, url, params = {})=>{
     const options = {
         method: method,
         url: url,
@@ -19,4 +19,24 @@ const connect = async (method, url, params = {})=>{
     }
 }
 
-export default connect;
+const GoogleAPIconnect = async (method, url)=>{
+
+    const options = {
+        method: method,
+        url: url,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        }
+    };
+
+    try{
+        return await axios.request(options);
+    }
+    catch(error){
+        return error;
+    }
+}
+
+export  default RapidAPIconnect ;
+export { GoogleAPIconnect};

@@ -1,9 +1,9 @@
 import React from 'react';
-import connect from './connector';
+import RapidAPIConnect from './connector';
 import { styled } from '@mui/material/styles';
 import {Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import GameCard from './components/gameCard';
-
+import { Link } from 'react-router-dom';
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#3a3f44"),
@@ -22,14 +22,17 @@ class HomePage extends React.Component {
     }
 
     async componentDidMount(){
-        const gamesResp = await connect("GET","https://free-to-play-games-database.p.rapidapi.com/api/games");
-        this.setState({
-            games : gamesResp.data
-        })
+        const gamesResp = await RapidAPIConnect("GET","https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=popularity");
+        if(gamesResp.status === 200)
+        {
+            this.setState({
+                games : gamesResp.data
+            })
+        }
+        
     }
-    
+
     render() { 
-        console.log(this.state.count, this.state.games.slice(0,this.state.count));
         return (
             <div>
              {
@@ -42,10 +45,12 @@ class HomePage extends React.Component {
                         </Typography>    
                         <Typography variant='subtitle1' component="div" sx={{margin:"auto", color:"white", pb:3, opacity:0.7}}> 
                             Enter a world of adventure and excitement, where anything is possible and the only limit is your imagination.
-                        </Typography>     
-                        <ColorButton variant='contained'>
-                            Explore
-                        </ColorButton>                 
+                        </Typography> 
+                        <Link to="/explore" style={{textDecoration:"none"}} >
+                            <ColorButton variant='contained'>
+                                Explore
+                            </ColorButton>  
+                        </Link>          
                     </Box>
                     <Typography variant='h5' component="div" sx={{paddingTop:3, color:"white", fontWeight:"bold", opacity:0.75}}> 
                         Most Popular
@@ -66,7 +71,6 @@ class HomePage extends React.Component {
                 </Box>  
                 )
                 :<CircularProgress sx={{my:7}} size={30}/>
-
              }   
             </div>
         );

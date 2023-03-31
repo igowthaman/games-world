@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@mui/material';
 import NavBar from './components/navbar';
 
 class AppPage extends React.Component {
@@ -7,8 +8,10 @@ class AppPage extends React.Component {
     render() { 
         return (
         <>
-            <NavBar/>
-            <Outlet/>
+            <NavBar user={this.props.user} setUser={this.props.setUser}/>
+            <Box mt={8}>
+                <Outlet/>
+            </Box>
         </>
         );
     }

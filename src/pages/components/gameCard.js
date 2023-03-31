@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography, Chip, Box} from '@mui/material';
+import { Card, CardContent, CardMedia, Typography} from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -18,9 +18,9 @@ class GameCard extends React.Component {
                         <Typography variant="body2" color="white" sx={{opacity:0.5}}>
                             {this.props.game.short_description}
                         </Typography>
-                        <Box p={1}>
+                        {/* <Box p={1}>
                             <Chip label={this.props.game.genre} sx={{bgcolor:"#282c348c", color:"white", fontWeight:"bold"}} />
-                        </Box>
+                        </Box> */}
                     </CardContent>
                 </Card>
             </Link>
