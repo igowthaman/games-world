@@ -6,7 +6,7 @@ import GameCard from './components/gameCard';
 import { Link } from 'react-router-dom';
 
 const ColorButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText("#3a3f44"),
+    color: "white",
     paddingBottom : 3,
     backgroundColor: "#3a3f44",
     '&:hover': {

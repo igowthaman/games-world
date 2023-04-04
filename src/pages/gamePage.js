@@ -40,7 +40,8 @@ class GamePage extends React.Component {
             game : null,
             modal : false,
             rating : 0,
-            review : 0
+            review : 0,
+            description : false
         } 
     }
 
@@ -96,10 +97,20 @@ class GamePage extends React.Component {
             review : 2
         })
         setTimeout(()=>{
-            window.location.href = this.state.game.game_url;
+            
+            window.open(this.state.game.game_url,"_blank");
         }, 1500)
         
         return;
+    }
+
+    setDescription(){
+        this.setState(
+            {
+                ...this.state,
+                description : !this.state.description
+            }
+        )
     }
 
     render() { 
@@ -126,7 +137,16 @@ class GamePage extends React.Component {
                                 <Box mb={3}>
                                     <Typography component={"div"} variant='h5' sx={titleStyle}>About</Typography>
                                     <Divider color="white" sx={{my:1}}/>
-                                    <Typography component={"div"} variant='subtitle1'>{this.state.game.description}</Typography>
+                                    <Typography component={"div"} variant='subtitle1'>
+                                        {   this.state.description
+                                            ?this.state.game.description
+                                            :this.state.game.description.slice(0,400)
+                                        }
+                                        <Button onClick={()=>this.setDescription()}>{   this.state.description
+                                            ?"Show Less"
+                                            :"Show More"
+                                        }</Button>
+                                    </Typography>
                                 </Box>
                                 <Box mb={3}>
                                     <Typography component={"div"} variant='h5' sx={titleStyle}>Additional </Typography>
@@ -244,8 +264,8 @@ class GamePage extends React.Component {
                                     <Button type='submit' variant='contained'>Submit</Button>
                                     <hr/>
                                     <Typography variant='title1' component="legend" sx={titleStyle} pb={1}>Continue without review</Typography>
-                                    <Link style={{textDecoration:"none"}} to={this.state.game.game_url}>
-                                        <Button variant='contained'>Play Now</Button>
+                                    <Link style={{textDecoration:"none"}} to={this.state.game.game_url} target='_blank'>
+                                        <Button variant='contained' onClick={()=>this.handleModal()}>Play Now</Button>
                                     </Link>
                                 </Box>
                             </form>

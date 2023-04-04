@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 class GameCard extends React.Component {
-    state = {  } 
+    state = { description :true } 
+
+    setDescription(){
+        this.setState({
+            description : !this.state.description
+        })
+    }
     
     render() {
         return (

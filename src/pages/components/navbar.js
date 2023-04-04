@@ -1,7 +1,6 @@
 import React from 'react';
 import { AppBar, Container, Toolbar, Typography, MenuItem, Menu, Avatar, IconButton, Tooltip, Box } from '@mui/material';
 import { Link, Navigate } from 'react-router-dom';
-import PersonIcon from '@mui/icons-material/Person';
 
 
 class NavBar extends React.Component {
@@ -10,10 +9,11 @@ class NavBar extends React.Component {
     }
 
     render() { 
+        console.log(this.props.user);
         return (
             <AppBar position="fixed" sx={{backgroundColor:"#282c34"}}>
                 { 
-                    this.props.user === null 
+                    this.props.user === null
                     ?<Navigate to="/signin" />
                     :""
                 }
@@ -44,7 +44,7 @@ class NavBar extends React.Component {
                         <Box>
                             <Tooltip title="Profile">
                                 <IconButton onClick={()=>{this.setState({menuStatus : !this.state.menuStatus})}} sx={{ p: 0 }}>
-                                    <Avatar><PersonIcon/></Avatar>
+                                    <Avatar src={this.props.user?.IO}></Avatar>
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -62,8 +62,16 @@ class NavBar extends React.Component {
                                 open={this.state.menuStatus}
                                 onClose={()=>{this.setState({menuStatus : !this.state.menuStatus})}}
                             >
-                                
-                                <MenuItem onClick={()=>{this.setState({menuStatus : !this.state.menuStatus})}}>
+                                <MenuItem  sx={{width:"100%",justifyContent:"center"}}>
+                                    <Box sx={{width:"100%",textAlign:"center"}}>
+                                        <Avatar src={this.props.user?.IO} sx={{margin:"auto"}}></Avatar>
+                                        <Typography variant='h6' component="div">{this.props.user?.yf}</Typography>
+                                        
+                                        <Typography variant='body2' component="div">{this.props.user?.fw}</Typography>
+                                    </Box>
+                                    <hr/>
+                                </MenuItem>
+                                <MenuItem onClick={()=>{this.setState({menuStatus : !this.state.menuStatus})}} sx={{width:"100%",justifyContent:"center"}}>
                                     <Typography textAlign="center" onClick={()=>{this.props.setUser(null)}}>Logout</Typography>
                                 </MenuItem>
                             </Menu>

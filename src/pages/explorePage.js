@@ -88,15 +88,15 @@ class ExplorePage extends React.Component {
         <Grid container sx={{color:"white", px:2}}>
             <Grid item xs={12} md={10} lg={9} m="auto" pt={2}>
                 <Box sx={{bgcolor:"#3a3f44",p:2, textAlign:"start", borderRadius:"10px"}}>
-                    <FormControl sx={{ m: 1, width:"100%", maxWidth:"200px"}} size="small">
-                        <InputLabel id="sort" sx={{color:"white"}} >Sort By</InputLabel>
+                    <FormControl sx={{ m: 1, width:"100%", maxWidth:"200px", outlineColor:"white"}} size="small">
+                        <InputLabel id="sort" sx={{color:"white",  borderColor:"white"}} >Sort By</InputLabel>
                         <Select
                             labelId="sort"
                             id="sort"
                             value={this.state.sort}
                             label="Sort"
                             onChange={(event)=>this.alterSort(event.target.value)}
-                            sx={{color:"white",py:1}}
+                            sx={{color:"white", borderColor:"white",py:1}}
                         >
                             <MenuItem value={"relevance"}>Relevance</MenuItem>
                             <MenuItem value={"release-date"}> Release Date</MenuItem>
