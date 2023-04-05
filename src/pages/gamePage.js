@@ -97,8 +97,13 @@ class GamePage extends React.Component {
             review : 2
         })
         setTimeout(()=>{
-            
             window.open(this.state.game.game_url,"_blank");
+            this.setState({
+                ...this.state,
+                modal : !this.state.modal,
+                rating : 0,
+                review : 0
+            })
         }, 1500)
         
         return;
@@ -122,7 +127,7 @@ class GamePage extends React.Component {
                     this.state.game !== undefined
                     ?(
                     <>
-                        <Grid container sx={{color:"white", mt:3, px:4}} justifyContent="space-evenly">
+                        <Grid container sx={{color:"white", mt:3, px:4}} justifyContent="space-evenly" spacing={5}>
                             <Grid item xs={12}  lg={4} pb={4}>
                                 <img src={this.state.game.thumbnail} alt={this.state.game.title} style={{maxWidth:"100%"}}></img>
                                 <Typography component={"div"} variant='h4' pt={4} pb={4}>
@@ -142,7 +147,8 @@ class GamePage extends React.Component {
                                             ?this.state.game.description
                                             :this.state.game.description.slice(0,400)
                                         }
-                                        <Button onClick={()=>this.setDescription()}>{   this.state.description
+                                        <Button onClick={()=>this.setDescription()}>
+                                            {   this.state.description
                                             ?"Show Less"
                                             :"Show More"
                                         }</Button>
@@ -187,11 +193,11 @@ class GamePage extends React.Component {
                                 <Box mb={3}>
                                     <Typography component={"div"} variant='h5' sx={titleStyle}>Screenshots</Typography>
                                     <Divider color="white" sx={{my:1}}/>
-                                    <Grid container>    
+                                    <Grid container spacing={2}>    
                                     {
                                         this.state.game.screenshots.map(
                                             (item, ind)=>{
-                                                return <Grid item xs={10} md={4} key={ind} m="auto" >
+                                                return <Grid item xs={10} md={4} key={ind} >
                                                     <img src={item.image} alt={this.state.game.title} width="100%"></img>
                                                 </Grid>
                                             }

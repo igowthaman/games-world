@@ -89,22 +89,22 @@ class ExplorePage extends React.Component {
             <Grid item xs={12} md={10} lg={9} m="auto" pt={2}>
                 <Box sx={{bgcolor:"#3a3f44",p:2, textAlign:"start", borderRadius:"10px"}}>
                     <FormControl sx={{ m: 1, width:"100%", maxWidth:"200px", outlineColor:"white"}} size="small">
-                        <InputLabel id="sort" sx={{color:"white",  borderColor:"white"}} >Sort By</InputLabel>
+                        <InputLabel id="sort" sx={{color:"white",  borderColor:"white"}} >Sort by</InputLabel>
                         <Select
                             labelId="sort"
                             id="sort"
                             value={this.state.sort}
-                            label="Sort"
+                            label="Sort by"
                             onChange={(event)=>this.alterSort(event.target.value)}
-                            sx={{color:"white", borderColor:"white",py:1}}
-                        >
+                            sx={{color:"white", borderColor:"white",py:1,"fieldset":{borderColor:"white"}}}
+                        >#3a3f44
                             <MenuItem value={"relevance"}>Relevance</MenuItem>
                             <MenuItem value={"release-date"}> Release Date</MenuItem>
                             <MenuItem value={"popularity"}>Popularity</MenuItem>
                             <MenuItem value={"alphabetical"}>Alphabetical</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl sx={{ m: 1, width:"100%", maxWidth:"200px", }}>
+                    <FormControl sx={{ m: 1, width:"100%", maxWidth:"200px","fieldset":{borderColor:"white"}}}>
                         <InputLabel id="category" sx={{color:"white"}}>Category</InputLabel>
                         <Select
                             labelId="category"
@@ -144,7 +144,7 @@ class ExplorePage extends React.Component {
                                     }
                                 </Grid>
                                 <Box width="50%" m="auto">
-                                    <Pagination count={this.state.pages} size='large' color='primary' sx={{color:"white", width:"auto"}} onChange={(event, page)=>{this.updatePage(page)}} />
+                                    <Pagination count={this.state.pages} size='large' color='primary' sx={{color:"white", width:"auto","button, div":{color:"white"}}} onChange={(event, page)=>{this.updatePage(page)}} />
                                 </Box>
                             </>
                             :<Typography >No Games Found</Typography>

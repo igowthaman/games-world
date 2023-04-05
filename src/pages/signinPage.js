@@ -6,8 +6,14 @@ import GoogleIcon from '@mui/icons-material/Google';
 class SigninPage extends React.Component {
 
     render() { 
+        let path = null;
+        if(window.location.search){
+            let params = new URL(document.location).searchParams;
+            path = params.get("redirect");
+        }
+
         return (<>
-        {(this.props.user)&& <Navigate to="/"/>}
+        {(this.props.user)&& <Navigate to={path?path:"/"}/>}
         <Box sx={{py:7}}>
             {
                 this.props.status

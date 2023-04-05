@@ -14,7 +14,7 @@ class NavBar extends React.Component {
             <AppBar position="fixed" sx={{backgroundColor:"#282c34"}}>
                 { 
                     this.props.user === null
-                    ?<Navigate to="/signin" />
+                    ?<Navigate to={"/signin?redirect="+window.location.pathname} />
                     :""
                 }
                 <Container maxWidth="xl">
