@@ -8,7 +8,7 @@ import GamePage from './pages/gamePage';
 import ExplorePage from './pages/explorePage';
 import ErrorBoundary from './pages/errorPage';
 
-const googleClientId = '849831668981-k3igmo8jel8u4vevsbabt5idcvijofpg.apps.googleusercontent.com';
+const googleClientId = '';
 const SCOPE = 'https://www.googleapis.com/auth/userinfo.profile'
 let _gapi = null;
 let _googleAuth = null;
@@ -34,7 +34,7 @@ class App extends React.Component {
     _gapi.load('client:auth2', () => {
       (async () => { 
         await _gapi.client.init({
-          apiKey :"AIzaSyBN0bfBBKvQW46xvTJbn5bskxz0FS3P4n8" ,
+          apiKey :"" ,
           client_id: googleClientId,
           plugin_name:'games-world',
           scope: SCOPE
