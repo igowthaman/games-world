@@ -8,7 +8,6 @@ import GamePage from './pages/gamePage';
 import ExplorePage from './pages/explorePage';
 import ErrorBoundary from './pages/errorPage';
 
-const googleClientId = '';
 const SCOPE = 'https://www.googleapis.com/auth/userinfo.profile'
 let _gapi = null;
 let _googleAuth = null;
@@ -34,8 +33,8 @@ class App extends React.Component {
     _gapi.load('client:auth2', () => {
       (async () => { 
         await _gapi.client.init({
-          apiKey :"" ,
-          client_id: googleClientId,
+          apiKey :process.env.REACT_APP_GAPI_KEY ,
+          client_id: process.env.REACT_APP_GAPI_CLIENT_ID,
           plugin_name:'games-world',
           scope: SCOPE
         });
@@ -105,7 +104,16 @@ class App extends React.Component {
                       <Route path="/explore" element={<ExplorePage/>}/>
                       <Route path="/:gameid" element={<GamePage/>}/>
                   </Route>
-                  <Route path="/signin" element={<SigninPage status={this.state.status} user={this.state.UserDeatils} setUser={()=>this.handleAuthClick()}/>}/>
+                  <Route 
+                    path="/signin" 
+                    element={
+                      <SigninPage 
+                        status={this.state.status} 
+                        user={this.state.UserDeatils} 
+                        setUser={()=>this.handleAuthClick()}
+                      />
+                    }
+                  />
               </Routes>
           </BrowserRouter>
         </ErrorBoundary>

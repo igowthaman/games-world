@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, CircularProgress, Typography } from '@mui/material';
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import GoogleIcon from '@mui/icons-material/Google';
 
 class SigninPage extends React.Component {
