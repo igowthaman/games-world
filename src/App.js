@@ -42,11 +42,12 @@ class App extends React.Component {
         _googleAuth = _gapi.auth2.getAuthInstance();
         _googleAuth.isSignedIn.listen(this.updateSigninStatus);
         var user = _googleAuth.currentUser.get();
-        if(user.zc){
+        console.log(user);
+        if(user.Ca){
           this.setState({
             ...this.state,
-            UserDeatils: user.tv,
-            userToken :  user.zc,
+            UserDeatils: user.Aw,
+            userToken :  user.Jc,
             status: true
           })
         }
@@ -75,8 +76,8 @@ class App extends React.Component {
     if (isAuthorized) {
       this.setState({
         ...this.state,
-        UserDeatils : user.tv,
-        userToken :  user.zc
+        UserDeatils : user.Aw,
+        userToken :  user.Jc
       })
     } 
     else {

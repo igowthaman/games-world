@@ -44,7 +44,7 @@ class NavBar extends React.Component {
                         <Box>
                             <Tooltip title="Profile">
                                 <IconButton onClick={()=>{this.setState({menuStatus : !this.state.menuStatus})}} sx={{ p: 0 }}>
-                                    <Avatar src={this.props.user?.IO}></Avatar>
+                                    <Avatar src={this.props.user?.rQ}></Avatar>
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -64,10 +64,10 @@ class NavBar extends React.Component {
                             >
                                 <MenuItem  sx={{width:"100%",justifyContent:"center"}}>
                                     <Box sx={{width:"100%",textAlign:"center"}}>
-                                        <Avatar src={this.props.user?.IO} sx={{margin:"auto"}}></Avatar>
-                                        <Typography variant='h6' component="div">{this.props.user?.yf}</Typography>
+                                        <Avatar src={this.props.user?.rQ} sx={{margin:"auto"}}></Avatar>
+                                        <Typography variant='h6' component="div">{this.props.user?.Nf}</Typography>
                                         
-                                        <Typography variant='body2' component="div">{this.props.user?.fw}</Typography>
+                                        <Typography variant='body2' component="div">{this.props.user?.qx}</Typography>
                                     </Box>
                                     <hr/>
                                 </MenuItem>
