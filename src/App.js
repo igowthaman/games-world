@@ -42,11 +42,11 @@ class App extends React.Component {
         _googleAuth = _gapi.auth2.getAuthInstance();
         _googleAuth.isSignedIn.listen(this.updateSigninStatus);
         var user = _googleAuth.currentUser.get();
-        console.log(user);
-        if(user.Ca){
+
+        if (user.isSignedIn()){
           this.setState({
             ...this.state,
-            UserDeatils: user.Aw,
+            UserDeatils: user.getBasicProfile(),
             userToken :  user.Jc,
             status: true
           })
@@ -62,7 +62,7 @@ class App extends React.Component {
   }
 
   handleAuthClick() {
-    if (_googleAuth.isSignedIn.get()) {
+    if (_googleAuth.currentUser.get().isSignedIn()) {
       _googleAuth.signOut();
     } else {
       _googleAuth.signIn();
@@ -76,7 +76,7 @@ class App extends React.Component {
     if (isAuthorized) {
       this.setState({
         ...this.state,
-        UserDeatils : user.Aw,
+        UserDeatils: user.getBasicProfile(),
         userToken :  user.Jc
       })
     } 
