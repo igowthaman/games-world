@@ -1,6 +1,6 @@
 # Games World 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Material Ui](https://mui.com/material-ui/)
+This project was bootstrapped with [Vite](https://vite.dev/) and [Material Ui](https://mui.com/material-ui/)
 
 For API Key -  [Rapid API -  Free-to-Play Games Database](https://rapidapi.com/digiwalls/api/free-to-play-games-database)
 
